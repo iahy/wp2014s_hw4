@@ -19,16 +19,11 @@
 					$("body").append('My ID is' + response.id);
 				});
 
-
-				FB.ui({
-					method: 'share',
-					href: 'https://kangw3n.github.io/facebook/',
-				}, function (response) {});
-					
-				FB.ui({
-					method: 'send',
-					link: 'http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html',
-				});
+				FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
+					 var str="<img src="+ response.data.url +">";
+					 //$('#preview1').append(str);
+					$('#preview1').attr("src",response.data.url); //頁面1顯示
+					});
 
 				FB.api('/me/likes', function (response) {
 					console.log(response)
@@ -37,10 +32,10 @@
 					}
 				});
 					
-				FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
+				/*FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
 					var str="<img src="+ response.data.url +">";
 					$('body').append(str);
-				});
+				});*/
 										
 				FB.api('/me/photos', 'post', {
 					name:"test",
@@ -56,6 +51,10 @@
 					});
 					} else if (response.status === 'not_authorized') {
 						console.log("this user is not authorizied your apps");
+						
+						
+						
+						
 				FB.login(function (response) {
 					// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
 					if (response.authResponse) { // if user login to your apps right after handle an event
