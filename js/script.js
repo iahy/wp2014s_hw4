@@ -1,6 +1,5 @@
 // JavaScript Document
 
-<script>
 	window.fbAsyncInit = function () {
 		FB.init({
 			appId: '320206518133001', 
@@ -213,6 +212,4 @@ function dataURItoBlob(dataURI) {
         type: 'image/png'
     });
 }
-
-</script>
 
