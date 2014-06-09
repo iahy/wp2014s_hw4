@@ -10,8 +10,6 @@ window.fbAsyncInit = function () {
 	});
 //輸入基本的Facebook init的狀態，與Facebook 連接，包括APP ID的設定
 
-
-
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     //呼叫api把圖片放到#preview IMG tag 內
