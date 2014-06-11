@@ -126,7 +126,7 @@ window.fbAsyncInit = function () {
 	js = d.createElement(s); js.id = id;
 	js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=320206518133001&version=v2.0";
 	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
 	
 function PostImageToFacebook(authToken) {
 	$('.info').append('<img src="img/loading.gif"/>')
