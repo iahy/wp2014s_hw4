@@ -12,25 +12,25 @@ window.fbAsyncInit = function () {
 			var accessToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
-			});
-			FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
-				 var str="<img src="+ response.data.url +">";
-				 //$('#preview1').append(str);
-				$('#preview1').attr("src",response.data.url); //頁面1顯示
+				FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
+					 var str="<img src="+ response.data.url +">";
+					 //$('#preview1').append(str);
+					$('#preview1').attr("src",response.data.url); //頁面1顯示
 				});
+			});
+			
 		} else if (response.status === 'not_authorized') {
-					console.log("this user is not authorizied your apps");
-						
+			console.log("this user is not authorizied your apps");			
 			FB.login(function (response) {
 				// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
-			if (response.authResponse) { // if user login to your apps right after handle an event
-					window.location.reload();
+				if (response.authResponse) { // if user login to your apps right after handle an event
+				window.location.reload();
 				};
 			}, {
 				scope: 'user_location,user_photos'
 			});
 		} else {
-				console.log("this isn't logged in to Facebook.");
+			console.log("this isn't logged in to Facebook.");
 			FB.login(function (response) {
 				if (response.authResponse) {
 					window.location.reload();
