@@ -9,6 +9,7 @@ window.fbAsyncInit = function () {
 		if (response.status === 'connected') {
 			var uid = response.authResponse.userID;
 			var authToken = response.authResponse.accessToken;
+			window.e = authToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
 				
@@ -118,6 +119,7 @@ window.fbAsyncInit = function () {
 	js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=320206518133001&version=v2.0";
 	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
+	
 function PostImageToFacebook(authToken) {
 	$('.info').append('<img src="img/loading.gif"/>')
     var canvas = document.getElementById("canvas");
