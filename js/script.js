@@ -13,9 +13,6 @@ window.fbAsyncInit = function () {
 			var accessToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
-				$("body").append('My links is' + response.link);
-				$("body").append('My Username is' + response.username); document.getElementsByTagName('body').innerHTML = ""
-				$("body").append('My ID is' + response.id);
 			});
 
 			FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
@@ -23,43 +20,18 @@ window.fbAsyncInit = function () {
 				 //$('#preview1').append(str);
 				$('#preview1').attr("src",response.data.url); //頁面1顯示
 				});
-
-			/*FB.api('/me/likes', function (response) {
-				console.log(response)
-				for (var i = 0; i < response.data.length; i++){
-				console.log(response.data[i].name);
-				}
-			});
-				
-			FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
-				var str="<img src="+ response.data.url +">";
-				$('body').append(str);
-			});*/
-									
-			/*FB.api('/me/photos', 'post', {
-				name:"test",
-				message: 'this is parse photo',
-				url: "http://140.119.169.167/facebook_temp/facebookdemo/img/facebook.jpg"//如果要init運行只能用絕對絕對路徑
-			}, function (response) {
-				if (!response || response.error) {
-					alert('Error occured:' + response);
-					console.log(response);
-				} else {
-					alert('Post ID: ' + response.id);
-				}
-				});*/
-			} else if (response.status === 'not_authorized') {
+		} else if (response.status === 'not_authorized') {
 					console.log("this user is not authorizied your apps");
 						
 			FB.login(function (response) {
 				// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
-				if (response.authResponse) { // if user login to your apps right after handle an event
+			if (response.authResponse) { // if user login to your apps right after handle an event
 					window.location.reload();
 				};
 			}, {
-				scope: 'user_about_me,user_location,user_photos'
+				scope: 'user_location,user_photos'
 			});
-			} else {
+		} else {
 				console.log("this isn't logged in to Facebook.");
 			FB.login(function (response) {
 				if (response.authResponse) {
@@ -70,7 +42,7 @@ window.fbAsyncInit = function () {
 				});
 			}
 		});
-//起始畫面
+	//起始畫面
 	var ctx = document.getElementById('canvas').getContext('2d'); //宣告變數找到頁面的canvas標籤的2d內容
 	ctx.font='20px "Arial"'; //設定字體與大小
 	ctx.fillText("Click here to start fill with Facebook Profile Picture", 40, 270); //設定預設的開始畫面
