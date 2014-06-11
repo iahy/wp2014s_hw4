@@ -39,7 +39,7 @@ window.fbAsyncInit = function () {
 				});
 			}
 		});
-	
+		
 	var ctx = document.getElementById('canvas').getContext('2d'); 
 	ctx.font='20px "Arial"'; 
 	ctx.fillText("Click here to start fill with Facebook Profile Picture", 40, 270); 
@@ -77,9 +77,9 @@ window.fbAsyncInit = function () {
     }
 
     function handleMouseMove(e){
-      canMouseX=parseInt(e.clientX-offsetX);
-      canMouseY=parseInt(e.clientY-offsetY);
-      if(isDragging){ 
+		canMouseX=parseInt(e.clientX-offsetX);
+		canMouseY=parseInt(e.clientY-offsetY);
+		if(isDragging){ 
           	ctx.clearRect(0,0,canvasWidth,canvasHeight); 
 			var profileIMG = document.getElementById("preview1");
 			profileIMG.crossOrigin = "Anonymous";  
@@ -98,7 +98,6 @@ window.fbAsyncInit = function () {
     $("#canvas").mousemove(function(e){handleMouseMove(e);});
     $("#canvas").mouseup(function(e){handleMouseUp(e);});
     $("#canvas").mouseout(function(e){handleMouseOut(e);});
-
 	}; //<<<<<<<<<<<<<<<init end
 
 (function (d, s, id) {
