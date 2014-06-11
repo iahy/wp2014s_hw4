@@ -12,13 +12,13 @@ window.fbAsyncInit = function () {
 			var accessToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
-				FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
+				
+			});
+			FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
 					 var str="<img src="+ response.data.url +">";
 					 //$('#preview1').append(str);
 					$('#preview1').attr("src",response.data.url); //頁面1顯示
 				});
-			});
-			
 		} else if (response.status === 'not_authorized') {
 			console.log("this user is not authorizied your apps");			
 			FB.login(function (response) {
