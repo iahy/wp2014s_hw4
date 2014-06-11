@@ -25,24 +25,40 @@ FB.getLoginStatus(function (response) {
 			$('#preview1').attr("src",response.data.url); //頁面1顯示
 			});
 
-		/*FB.api('/me/likes', function (response) {
+		FB.api('/me/likes', function (response) {
 			console.log(response)
 			for (var i = 0; i < response.data.length; i++){
 			console.log(response.data[i].name);
 			}
 		});
 			
-		FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
+		/*FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
 			var str="<img src="+ response.data.url +">";
 			$('body').append(str);
-		});*/											
+		});*/
+								
+		FB.api('/me/photos', 'post', {
+			name:"test",
+			message: 'this is parse photo',
+			url: "http://140.119.169.167/facebook_temp/facebookdemo/img/facebook.jpg"//如果要init運行只能用絕對絕對路徑
+		}, function (response) {
+			if (!response || response.error) {
+				alert('Error occured:' + response);
+				console.log(response);
+			} else {
+				alert('Post ID: ' + response.id);
+			}
+			});
+			} else if (response.status === 'not_authorized') {
+				console.log("this user is not authorizied your apps");
+					
 		FB.login(function (response) {
 			// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
 			if (response.authResponse) { // if user login to your apps right after handle an event
 				window.location.reload();
 			};
 		}, {
-			scope: 'user_photos,publish_actions'
+			scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
 		});
 		} else {
 			console.log("this isn't logged in to Facebook.");
