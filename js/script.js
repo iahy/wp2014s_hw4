@@ -25,14 +25,14 @@ FB.getLoginStatus(function (response) {
 			$('#preview1').attr("src",response.data.url); //頁面1顯示
 			});
 
-		FB.api('/me/likes', function (response) {
+		/*FB.api('/me/likes', function (response) {
 			console.log(response)
 			for (var i = 0; i < response.data.length; i++){
 			console.log(response.data[i].name);
 			}
 		});
 			
-		/*FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
+		FB.api('/me/picture?type=normal', function(response) { // normal/large/squere 
 			var str="<img src="+ response.data.url +">";
 			$('body').append(str);
 		});*/											
@@ -42,7 +42,7 @@ FB.getLoginStatus(function (response) {
 				window.location.reload();
 			};
 		}, {
-			scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
+			scope: 'user_photos,publish_actions'
 		});
 		} else {
 			console.log("this isn't logged in to Facebook.");
