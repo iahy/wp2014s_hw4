@@ -1,5 +1,4 @@
 // JavaScript Document
-
 window.fbAsyncInit = function () {
 	FB.init({
 		appId: '320206518133001', 
@@ -9,7 +8,7 @@ window.fbAsyncInit = function () {
 	FB.getLoginStatus(function (response) {
 		if (response.status === 'connected') {
 			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
+			var authToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
 				
