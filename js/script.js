@@ -8,16 +8,11 @@ window.fbAsyncInit = function () {
 	});
 	FB.getLoginStatus(function (response) {
 		if (response.status === 'connected') {
-
 			var uid = response.authResponse.userID;
 			var accessToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				//console.log(response);
-				$("body").append('My links is' + response.link);
-				$("body").append('My Username is' + response.username); document.getElementsByTagName('body').innerHTML = ""
-				$("body").append('My ID is' + response.id);
 			});
-
 			FB.api('/me/picture?type=large', function(response) { // normal/large/squere 
 				 var str="<img src="+ response.data.url +">";
 				 //$('#preview1').append(str);
