@@ -47,10 +47,10 @@ window.fbAsyncInit = function () {
 				} else {
 					alert('Post ID: ' + response.id);
 				}
-				});
-				} else if (response.status === 'not_authorized') {
+				});*/
+			} else if (response.status === 'not_authorized') {
 					console.log("this user is not authorizied your apps");
-			*/			
+						
 			FB.login(function (response) {
 				// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
 				if (response.authResponse) { // if user login to your apps right after handle an event
